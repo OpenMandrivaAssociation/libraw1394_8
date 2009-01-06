@@ -1,28 +1,21 @@
-%define	name	libraw1394
+%define	name	libraw1394_8
+%define oname libraw1394
 %define	version	1.3.0
-%define rel	2
+%define rel	3
 %define svn	0
-%if %svn
-%define	release	%mkrel 0.%svn.%rel
-%else
 %define release	%mkrel %rel
-%endif
 
 %define	major		8
 %define	libname		%mklibname raw1394_ %{major}
-%define	develname	%mklibname raw1394 -d
-%define staticname	%mklibname raw1394 -d -s
+%define	develname	%mklibname raw1394_%major -d
+%define staticname	%mklibname raw1394_%major -d -s
 
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 License:	LGPLv2+
 Group:		System/Libraries
-%if %svn
-Source0:	%{name}-%{svn}.tar.bz2
-%else
-Source0:	http://www.linux1394.org/dl/%{name}-%{version}.tar.gz
-%endif
+Source0:	http://www.linux1394.org/dl/%{oname}-%{version}.tar.gz
 Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 URL:		http://www.linux1394.org/
 Summary:	FireWire interface
@@ -44,11 +37,13 @@ match the kernel version (instead of all applications).
 %package -n	%{name}-utils
 Group:		Communications
 Summary:	Some small Firewire utilities
+Conflicts: %oname-utils
 
 %description -n	%{name}-utils
 This package contains a few utilities to send and receive raw data over
 Firewire (ieee1394).
 
+%if %_lib != lib
 %package -n	%{libname}
 Group:		System/Libraries
 Summary:	FireWire interface shared library
@@ -68,6 +63,7 @@ match the kernel version (instead of all applications).
 
 This package contains the shared library to run applications linked
 with %{name}.
+%endif
 
 %package -n	%{develname}
 Summary:	Development and include files for libraw1394
@@ -78,7 +74,6 @@ Group(pt_BR):	Desenvolvimento
 Group(es):	Desarrollo
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
-Obsoletes:	%{mklibname raw1394_8 -d}
 
 %description -n	%{develname}
 libraw1394 is the only supported interface to the kernel side raw1394 of
@@ -89,7 +84,6 @@ for the protocol in question.
 
 This archive contains the header-files for libraw1394 development.
 
-
 %package -n	%{staticname}
 Summary:	Development components for libraw1394
 Summary(pt_BR):	Componentes est?ticos de desenvolvimento para o libraw1394
@@ -98,7 +92,6 @@ Group:		Development/C
 Group(pt_BR):	Desenvolvimento
 Group(es):	Desarrollo
 Requires:	%{develname} = %{version}-%{release}
-Obsoletes:	%{mklibname raw1394_8 -d -s}
 
 %description -n	%{staticname}
 libraw1394 is the only supported interface to the kernel side raw1394 of
@@ -111,16 +104,9 @@ This archive contains the static libraries (.a)
 
 
 %prep
-%if %svn
-%setup -q -n %name
-%else
-%setup -q -n %name-%version
-%endif
+%setup -q -n %oname-%version
 
 %build
-%if %svn
-./autogen.sh
-%endif
 %configure2_5x
 %make
 
@@ -155,7 +141,7 @@ rm -rf %{buildroot}
 %{_includedir}/libraw1394
 %{_libdir}/libraw1394.so
 %{_libdir}/libraw1394.la
-%{_libdir}/pkgconfig/%{name}.pc
+%{_libdir}/pkgconfig/%{oname}.pc
 
 %files -n %{staticname}
 %defattr(-,root,root)
