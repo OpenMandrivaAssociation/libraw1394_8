@@ -1,9 +1,7 @@
 %define	name	libraw1394_8
 %define oname libraw1394
 %define	version	1.3.0
-%define rel	3
-%define svn	0
-%define release	%mkrel %rel
+%define release	%mkrel 4
 
 %define	major		8
 %define	libname		%mklibname raw1394_ %{major}
@@ -74,6 +72,7 @@ Group(pt_BR):	Desenvolvimento
 Group(es):	Desarrollo
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
+Conflicts:	%mklibname -d %oname
 
 %description -n	%{develname}
 libraw1394 is the only supported interface to the kernel side raw1394 of
