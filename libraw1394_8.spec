@@ -1,7 +1,7 @@
 %define	name	libraw1394_8
 %define oname libraw1394
 %define	version	1.3.0
-%define release	%mkrel 4
+%define release	%mkrel 5
 
 %define	major		8
 %define	libname		%mklibname raw1394_ %{major}
