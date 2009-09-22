@@ -72,7 +72,6 @@ Group(pt_BR):	Desenvolvimento
 Group(es):	Desarrollo
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
-Conflicts:	%mklibname -d %oname
 
 %description -n	%{develname}
 libraw1394 is the only supported interface to the kernel side raw1394 of
