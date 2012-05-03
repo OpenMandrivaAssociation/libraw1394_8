@@ -138,7 +138,6 @@ rm -rf %{buildroot}
 %doc README NEWS AUTHORS
 %{_includedir}/libraw1394
 %{_libdir}/libraw1394.so
-%{_libdir}/libraw1394.la
 %{_libdir}/pkgconfig/%{oname}.pc
 
 %files -n %{staticname}
