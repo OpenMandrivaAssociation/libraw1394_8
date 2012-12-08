@@ -1,7 +1,7 @@
 %define	name	libraw1394_8
 %define oname libraw1394
 %define	version	1.3.0
-%define release	%mkrel 9
+%define release	%mkrel 8
 
 %define	major		8
 %define	libname		%mklibname raw1394_ %{major}
@@ -143,3 +143,68 @@ rm -rf %{buildroot}
 %files -n %{staticname}
 %defattr(-,root,root)
 %{_libdir}/libraw1394.a
+
+
+%changelog
+* Mon May 02 2011 Oden Eriksson <oeriksson@mandriva.com> 1.3.0-8mdv2011.0
++ Revision: 661520
+- mass rebuild
+
+* Sun Nov 28 2010 Oden Eriksson <oeriksson@mandriva.com> 1.3.0-7mdv2011.0
++ Revision: 602600
+- rebuild
+
+* Tue Mar 16 2010 Oden Eriksson <oeriksson@mandriva.com> 1.3.0-6mdv2010.1
++ Revision: 520898
+- rebuilt for 2010.1
+
+  + Götz Waschk <waschk@mandriva.org>
+    - remove wrong conflict
+
+* Wed Sep 02 2009 Christophe Fergeau <cfergeau@mandriva.com> 1.3.0-5mdv2010.0
++ Revision: 425695
+- rebuild
+
+* Wed Jan 07 2009 Götz Waschk <waschk@mandriva.org> 1.3.0-4mdv2009.1
++ Revision: 326473
+- add conflict to the devel package
+
+* Tue Jan 06 2009 Götz Waschk <waschk@mandriva.org> 1.3.0-3mdv2009.1
++ Revision: 325308
+- readd libraw1394 1.3.0
+- fork libraw1394 package
+
+  + mandrake <mandrake@mandriva.com>
+    - %repsys markrelease
+      version: 1.3.0
+      release: 2mdv2009.2
+      revision: 217191
+      Copying 1.3.0-2mdv2009.0 to releases/ directory.
+
+  + Pixel <pixel@mandriva.com>
+    - do not call ldconfig in %%post/%%postun, it is now handled by filetriggers
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+    - kill ldconfig require as requested by pixel
+
+  + Funda Wang <fwang@mandriva.org>
+    - rebuild
+    - New version 1.3.0
+
+  + Adam Williamson <awilliamson@mandriva.org>
+    - correct license to LGPLv2+
+    - rebuild for 2008
+    - no need to package COPYING and INSTALL
+    - don't create /dev node manually (udev handles it)
+    - correct license to LGPLv2.1
+    - new devel policy
+    - drop patch0 (merged upstream)
+    - spec clean
+    - switch to a proper version scheme (was previously using svn, but undeclared)
+    - update to svn snapshot 172
+    - Import libraw1394
+
