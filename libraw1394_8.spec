@@ -14,7 +14,6 @@ Release:	%{release}
 License:	LGPLv2+
 Group:		System/Libraries
 Source0:	http://www.linux1394.org/dl/%{oname}-%{version}.tar.gz
-Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 URL:		http://www.linux1394.org/
 Summary:	FireWire interface
 Requires(post): coreutils
@@ -105,43 +104,30 @@ This archive contains the static libraries (.a)
 %setup -q -n %oname-%version
 
 %build
+#fix build with new automake
+sed -i -e 's,AM_CONFIG_HEADER,AC_CONFIG_HEADERS,g' configure.*
+autoreconf -fi
 %configure2_5x
 %make
 
 %install
-rm -rf %{buildroot}
 %{makeinstall_std}
 
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
-
-%clean
-rm -rf %{buildroot}
-
 %files -n %name-utils
-%defattr(-,root,root)
 %doc README AUTHORS
 %{_bindir}/*
 %{_mandir}/man*/*
 
 %files -n %{libname}
-%defattr(-,root,root)
 %{_libdir}/libraw1394.so.%{major}*
 
 %files -n %{develname}
-%defattr(-,root,root)
 %doc README NEWS AUTHORS
 %{_includedir}/libraw1394
 %{_libdir}/libraw1394.so
 %{_libdir}/pkgconfig/%{oname}.pc
 
 %files -n %{staticname}
-%defattr(-,root,root)
 %{_libdir}/libraw1394.a
 
 
