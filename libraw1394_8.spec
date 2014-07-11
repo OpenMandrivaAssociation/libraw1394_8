@@ -6,7 +6,7 @@
 Summary:	FireWire interface
 Name:		%{oname}_%{major}
 Version:	1.3.0
-Release:	13
+Release:	14
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://www.linux1394.org/
