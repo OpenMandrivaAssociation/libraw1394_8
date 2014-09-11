@@ -35,7 +35,7 @@ Conflicts:	%{oname}-utils
 This package contains a few utilities to send and receive raw data over
 Firewire (ieee1394).
 
-%if %{_lib} != lib
+%if %{_lib} != "lib"
 %package -n	%{libname}
 Group:		System/Libraries
 Summary:	FireWire interface shared library
@@ -73,7 +73,7 @@ sed -i -e 's,AM_CONFIG_HEADER,AC_CONFIG_HEADERS,g' configure.*
 autoreconf -fi
 
 %build
-%configure2_5x --disable-static
+%configure --disable-static
 %make
 
 %install
