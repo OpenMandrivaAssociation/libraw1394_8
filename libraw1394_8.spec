@@ -9,7 +9,7 @@ Version:	1.3.0
 Release:	18
 License:	LGPLv2+
 Group:		System/Libraries
-Url:		http://www.linux1394.org/
+Url:		https://www.linux1394.org/
 Source0:	http://www.linux1394.org/dl/%{oname}-%{version}.tar.gz
 Requires(post): coreutils
 
