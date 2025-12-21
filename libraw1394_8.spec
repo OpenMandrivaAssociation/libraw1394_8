@@ -13,6 +13,11 @@ Url:		https://www.linux1394.org/
 Source0:	http://www.linux1394.org/dl/%{oname}-%{version}.tar.gz
 Requires(post): coreutils
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 %description
 libraw1394 is the only supported interface to the kernel side raw1394 of
 the Linux IEEE-1394 subsystem, which provides direct access to the connected
